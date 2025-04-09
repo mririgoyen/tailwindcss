@@ -18,7 +18,7 @@ test(
       `,
       'index.mjs': js`
         import { Scanner } from '@tailwindcss/oxide-wasm32-wasi'
-        import { join } from 'node:path'
+        import { join, resolve } from 'node:path'
 
         let scanner = new Scanner({
           sources: [
@@ -28,7 +28,7 @@ test(
               // does not contain files required to load the WASM module.
               //
               // https://github.com/nodejs/node/issues/47193
-              base: join(process.cwd(), 'src'),
+              base: resolve(join(process.cwd(), 'src')),
               pattern: '**/*',
               negated: false,
             },
